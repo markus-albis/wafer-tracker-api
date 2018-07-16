@@ -39,8 +39,8 @@ Namespace Controllers
 
         ' ~/breeze/WaferTracker/ProductNames
         <HttpGet>
-        Public Function ProductNames() As IQueryable
-            Return _contextProvider.Context.ProductNames
+        Public Function Products() As IQueryable
+            Return _contextProvider.Context.Products
         End Function
 
         ' ~/breeze/WaferTracker/Technicians

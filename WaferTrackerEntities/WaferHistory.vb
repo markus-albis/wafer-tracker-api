@@ -14,17 +14,15 @@ Partial Public Class WaferHistory
     Public Property WaferHistoryId As Integer
     Public Property StartDate As Nullable(Of Date)
     Public Property StopDate As Nullable(Of Date)
-    Public Property LayerId As Nullable(Of Integer)
-    Public Property Number As Nullable(Of Integer)
-    Public Property TechnicianId As Nullable(Of Integer)
-    Public Property Text As String
     Public Property Remark As String
     Public Property Technician_TechnicianId As Integer
     Public Property WaferLocation_WaferLocationId As Integer
     Public Property Wafer_WaferID As Integer
+    Public Property Process_ProcessId As Nullable(Of Integer)
 
     Public Overridable Property Technician As Technician
     Public Overridable Property Wafer As Wafer
     Public Overridable Property WaferLocation As WaferLocation
+    Public Overridable Property Process As Process
 
 End Class

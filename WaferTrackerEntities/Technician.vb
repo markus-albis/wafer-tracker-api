@@ -10,13 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Layer
-    Public Property LayerId As Integer
-    Public Property Description As String
-    Public Property Acronym As String
-    Public Property Duration As Nullable(Of Integer)
-    Public Property LocationId As Nullable(Of Integer)
+Partial Public Class Technician
+    Public Property TechnicianId As Integer
+    Public Property FirstName As String
+    Public Property LastName As String
+    Public Property ShortCut As String
+    Public Property Site As String
 
-    Public Overridable Property ProcessSequences As ICollection(Of ProcessSequence) = New HashSet(Of ProcessSequence)
+    Public Overridable Property WaferHistories As ICollection(Of WaferHistory) = New HashSet(Of WaferHistory)
 
 End Class

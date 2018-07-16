@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WTDB2_0Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WTDB2_0Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="EpiSupplier">
           <Key>
             <PropertyRef Name="EPISupplierId" />
@@ -29,16 +29,6 @@
           <Property Name="Description" Type="varchar" MaxLength="45" />
           <Property Name="Remark" Type="varchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="Layer">
-          <Key>
-            <PropertyRef Name="LayerId" />
-          </Key>
-          <Property Name="LayerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="50" />
-          <Property Name="Acronym" Type="varchar" MaxLength="50" />
-          <Property Name="Duration" Type="int" />
-          <Property Name="LocationId" Type="int" />
-        </EntityType>
         <EntityType Name="Line">
           <Key>
             <PropertyRef Name="LineId" />
@@ -60,11 +50,21 @@
             <PropertyRef Name="MaskId" />
           </Key>
           <Property Name="MaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaskNameShortcut" Type="varchar" MaxLength="75" />
-          <Property Name="DeviceName" Type="varchar" MaxLength="100" />
           <Property Name="MaskName" Type="varchar" MaxLength="255" />
+          <Property Name="Shortcut" Type="varchar" MaxLength="75" />
+          <Property Name="DeviceName" Type="varchar" MaxLength="100" />
           <Property Name="Flat" Type="varchar" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Acronym" Type="varchar" MaxLength="50" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="ProcessGroup">
           <Key>
@@ -75,36 +75,35 @@
           <Property Name="Options" Type="varchar" MaxLength="50" />
           <Property Name="BaseMaterial" Type="varchar" MaxLength="50" />
           <Property Name="TargetDuration" Type="int" />
-          <Property Name="ProductName_ProductNameId" Type="int" Nullable="false" />
+          <Property Name="Product_ProductId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProcessSequence">
           <Key>
             <PropertyRef Name="ProcessSequenceId" />
           </Key>
           <Property Name="ProcessSequenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GroupId" Type="int" />
-          <Property Name="Index" Type="int" />
-          <Property Name="Layer_LayerId" Type="int" />
+          <Property Name="Index" Type="int" Nullable="false" />
+          <Property Name="Process_ProcessId" Type="int" Nullable="false" />
           <Property Name="ProcessGroup_ProcessGroupId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductFamily">
+        <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="ProductFamilyId" />
+            <PropertyRef Name="ProductId" />
           </Key>
-          <Property Name="ProductFamilyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Acronym" Type="varchar" MaxLength="50" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="255" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="255" />
+          <Property Name="ShortName" Type="varchar" MaxLength="255" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" />
+          <Property Name="Acronym" Type="varchar" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="ProductName">
+        <EntityType Name="ProductGroup">
           <Key>
-            <PropertyRef Name="ProductNameId" />
+            <PropertyRef Name="ProductGroupId" />
           </Key>
-          <Property Name="ProductNameId" Type="int" Nullable="false" />
-          <Property Name="ProductNameLong" Type="varchar" MaxLength="255" />
-          <Property Name="ProductNameShort" Type="varchar" MaxLength="255" />
-          <Property Name="ProductNameCustomer" Type="varchar" MaxLength="255" />
-          <Property Name="ProductNameAcronym" Type="varchar" MaxLength="255" />
-          <Property Name="ProductCode" Type="varchar" MaxLength="255" />
+          <Property Name="ProductGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Acronym" Type="varchar" MaxLength="50" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="SPCAcquisition">
@@ -156,10 +155,10 @@
             <PropertyRef Name="TechnicianId" />
           </Key>
           <Property Name="TechnicianId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="40" />
-          <Property Name="FNAME" Type="varchar" MaxLength="40" />
+          <Property Name="FirstName" Type="varchar" MaxLength="40" />
+          <Property Name="LastName" Type="varchar" MaxLength="40" />
+          <Property Name="ShortCut" Type="varchar" MaxLength="50" />
           <Property Name="Site" Type="varchar" MaxLength="50" />
-          <Property Name="ShortCutName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Wafer">
           <Key>
@@ -177,8 +176,8 @@
           <Property Name="WaferType_WaferTypeId" Type="int" Nullable="false" />
           <Property Name="WaferSize_WaferSizeId" Type="int" Nullable="false" />
           <Property Name="Mask_MaskId" Type="int" />
-          <Property Name="ProductName_ProductNameId" Type="int" />
-          <Property Name="ProductFamily_ProductFamilyId" Type="int" />
+          <Property Name="Product_ProductId" Type="int" />
+          <Property Name="ProductGroup_ProductGroupId" Type="int" />
           <Property Name="WaferState_WaferStateId" Type="int" />
           <Property Name="Lot_LotId" Type="int" />
           <Property Name="EpiType_EpiTypeId" Type="int" Nullable="false" />
@@ -190,14 +189,11 @@
           <Property Name="WaferHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StartDate" Type="datetime" Precision="0" />
           <Property Name="StopDate" Type="datetime" Precision="0" />
-          <Property Name="LayerId" Type="int" />
-          <Property Name="Number" Type="int" />
-          <Property Name="TechnicianId" Type="int" />
-          <Property Name="Text" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="varchar" MaxLength="100" />
           <Property Name="Technician_TechnicianId" Type="int" Nullable="false" />
           <Property Name="WaferLocation_WaferLocationId" Type="int" Nullable="false" />
           <Property Name="Wafer_WaferID" Type="int" Nullable="false" />
+          <Property Name="Process_ProcessId" Type="int" />
         </EntityType>
         <EntityType Name="WaferLocation">
           <Key>
@@ -240,27 +236,27 @@
           <Property Name="WaferTypeShortcut" Type="varchar" MaxLength="75" />
           <Property Name="WaferTypeName" Type="varchar" MaxLength="75" />
         </EntityType>
-        <Association Name="fk_ProcessGroup_ProductName1">
-          <End Role="ProductName" Type="Self.ProductName" Multiplicity="1" />
+        <Association Name="fk_ProcessGroup_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProcessGroup" Type="Self.ProcessGroup" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductName">
-              <PropertyRef Name="ProductNameId" />
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
             </Principal>
             <Dependent Role="ProcessGroup">
-              <PropertyRef Name="ProductName_ProductNameId" />
+              <PropertyRef Name="Product_ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_ProcessSequence_Layer1">
-          <End Role="Layer" Type="Self.Layer" Multiplicity="0..1" />
+        <Association Name="fk_ProcessSequence_Process1">
+          <End Role="Process" Type="Self.Process" Multiplicity="1" />
           <End Role="ProcessSequence" Type="Self.ProcessSequence" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Layer">
-              <PropertyRef Name="LayerId" />
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessId" />
             </Principal>
             <Dependent Role="ProcessSequence">
-              <PropertyRef Name="Layer_LayerId" />
+              <PropertyRef Name="Process_ProcessId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -384,27 +380,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Wafer_ProductFamily1">
-          <End Role="ProductFamily" Type="Self.ProductFamily" Multiplicity="0..1" />
+        <Association Name="fk_Wafer_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Wafer" Type="Self.Wafer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductFamily">
-              <PropertyRef Name="ProductFamilyId" />
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
             </Principal>
             <Dependent Role="Wafer">
-              <PropertyRef Name="ProductFamily_ProductFamilyId" />
+              <PropertyRef Name="Product_ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Wafer_ProductName1">
-          <End Role="ProductName" Type="Self.ProductName" Multiplicity="0..1" />
+        <Association Name="fk_Wafer_ProductGroup1">
+          <End Role="ProductGroup" Type="Self.ProductGroup" Multiplicity="0..1" />
           <End Role="Wafer" Type="Self.Wafer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductName">
-              <PropertyRef Name="ProductNameId" />
+            <Principal Role="ProductGroup">
+              <PropertyRef Name="ProductGroupId" />
             </Principal>
             <Dependent Role="Wafer">
-              <PropertyRef Name="ProductName_ProductNameId" />
+              <PropertyRef Name="ProductGroup_ProductGroupId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -453,6 +449,18 @@
             </Principal>
             <Dependent Role="Wafer">
               <PropertyRef Name="WaferType_WaferTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_WaferHistory_Process1">
+          <End Role="Process" Type="Self.Process" Multiplicity="0..1" />
+          <End Role="WaferHistory" Type="Self.WaferHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessId" />
+            </Principal>
+            <Dependent Role="WaferHistory">
+              <PropertyRef Name="Process_ProcessId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -508,14 +516,14 @@
           <EntitySet Name="EpiSupplier" EntityType="Self.EpiSupplier" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="EpiType" EntityType="Self.EpiType" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="FailureCategory" EntityType="Self.FailureCategory" Schema="wtdb2_0" store:Type="Tables" />
-          <EntitySet Name="Layer" EntityType="Self.Layer" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="Line" EntityType="Self.Line" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="Lot" EntityType="Self.Lot" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="Mask" EntityType="Self.Mask" Schema="wtdb2_0" store:Type="Tables" />
+          <EntitySet Name="Process" EntityType="Self.Process" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="ProcessGroup" EntityType="Self.ProcessGroup" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="ProcessSequence" EntityType="Self.ProcessSequence" Schema="wtdb2_0" store:Type="Tables" />
-          <EntitySet Name="ProductFamily" EntityType="Self.ProductFamily" Schema="wtdb2_0" store:Type="Tables" />
-          <EntitySet Name="ProductName" EntityType="Self.ProductName" Schema="wtdb2_0" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="wtdb2_0" store:Type="Tables" />
+          <EntitySet Name="ProductGroup" EntityType="Self.ProductGroup" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="SPCAcquisition" EntityType="Self.SPCAcquisition" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="SPCData" EntityType="Self.SPCData" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="SPCDataType" EntityType="Self.SPCDataType" Schema="wtdb2_0" store:Type="Tables" />
@@ -528,12 +536,12 @@
           <EntitySet Name="WaferState" EntityType="Self.WaferState" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="WaferSupplier" EntityType="Self.WaferSupplier" Schema="wtdb2_0" store:Type="Tables" />
           <EntitySet Name="WaferType" EntityType="Self.WaferType" Schema="wtdb2_0" store:Type="Tables" />
-          <AssociationSet Name="fk_ProcessGroup_ProductName1" Association="Self.fk_ProcessGroup_ProductName1">
-            <End Role="ProductName" EntitySet="ProductName" />
+          <AssociationSet Name="fk_ProcessGroup_Product1" Association="Self.fk_ProcessGroup_Product1">
+            <End Role="Product" EntitySet="Product" />
             <End Role="ProcessGroup" EntitySet="ProcessGroup" />
           </AssociationSet>
-          <AssociationSet Name="fk_ProcessSequence_Layer1" Association="Self.fk_ProcessSequence_Layer1">
-            <End Role="Layer" EntitySet="Layer" />
+          <AssociationSet Name="fk_ProcessSequence_Process1" Association="Self.fk_ProcessSequence_Process1">
+            <End Role="Process" EntitySet="Process" />
             <End Role="ProcessSequence" EntitySet="ProcessSequence" />
           </AssociationSet>
           <AssociationSet Name="fk_ProcessSequence_ProcessGroup1" Association="Self.fk_ProcessSequence_ProcessGroup1">
@@ -576,12 +584,12 @@
             <End Role="Mask" EntitySet="Mask" />
             <End Role="Wafer" EntitySet="Wafer" />
           </AssociationSet>
-          <AssociationSet Name="fk_Wafer_ProductFamily1" Association="Self.fk_Wafer_ProductFamily1">
-            <End Role="ProductFamily" EntitySet="ProductFamily" />
+          <AssociationSet Name="fk_Wafer_Product1" Association="Self.fk_Wafer_Product1">
+            <End Role="Product" EntitySet="Product" />
             <End Role="Wafer" EntitySet="Wafer" />
           </AssociationSet>
-          <AssociationSet Name="fk_Wafer_ProductName1" Association="Self.fk_Wafer_ProductName1">
-            <End Role="ProductName" EntitySet="ProductName" />
+          <AssociationSet Name="fk_Wafer_ProductGroup1" Association="Self.fk_Wafer_ProductGroup1">
+            <End Role="ProductGroup" EntitySet="ProductGroup" />
             <End Role="Wafer" EntitySet="Wafer" />
           </AssociationSet>
           <AssociationSet Name="fk_Wafer_WaferSize1" Association="Self.fk_Wafer_WaferSize1">
@@ -600,6 +608,10 @@
             <End Role="WaferType" EntitySet="WaferType" />
             <End Role="Wafer" EntitySet="Wafer" />
           </AssociationSet>
+          <AssociationSet Name="fk_WaferHistory_Process1" Association="Self.fk_WaferHistory_Process1">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="WaferHistory" EntitySet="WaferHistory" />
+          </AssociationSet>
           <AssociationSet Name="fk_WaferHistory_Technician1" Association="Self.fk_WaferHistory_Technician1">
             <End Role="Technician" EntitySet="Technician" />
             <End Role="WaferHistory" EntitySet="WaferHistory" />
@@ -617,8 +629,7 @@
             <End Role="WaferState" EntitySet="WaferState" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WTDB2_0Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -649,17 +660,6 @@
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="WaferStates" Relationship="Self.fk_WaferState_FailureCategory1" FromRole="FailureCategory" ToRole="WaferState" />
         </EntityType>
-        <EntityType Name="Layer">
-          <Key>
-            <PropertyRef Name="LayerId" />
-          </Key>
-          <Property Name="LayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Acronym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Duration" Type="Int32" />
-          <Property Name="LocationId" Type="Int32" />
-          <NavigationProperty Name="ProcessSequences" Relationship="Self.fk_ProcessSequence_Layer1" FromRole="Layer" ToRole="ProcessSequence" />
-        </EntityType>
         <EntityType Name="Line">
           <Key>
             <PropertyRef Name="LineId" />
@@ -683,9 +683,9 @@
             <PropertyRef Name="MaskId" />
           </Key>
           <Property Name="MaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaskNameShortcut" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
-          <Property Name="DeviceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="MaskName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Shortcut" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Flat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Wafers" Relationship="Self.fk_Wafer_Mask1" FromRole="Mask" ToRole="Wafer" />
@@ -699,44 +699,20 @@
           <Property Name="Options" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BaseMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TargetDuration" Type="Int32" />
-          <Property Name="ProductName_ProductNameId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ProductName" Relationship="Self.fk_ProcessGroup_ProductName1" FromRole="ProcessGroup" ToRole="ProductName" />
+          <Property Name="Product_ProductId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProcessSequences" Relationship="Self.fk_ProcessSequence_ProcessGroup1" FromRole="ProcessGroup" ToRole="ProcessSequence" />
+          <NavigationProperty Name="Product" Relationship="WTDB2_0Model.fk_ProcessGroup_Product1" FromRole="ProcessGroup" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProcessSequence">
           <Key>
             <PropertyRef Name="ProcessSequenceId" />
           </Key>
           <Property Name="ProcessSequenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GroupId" Type="Int32" />
-          <Property Name="Index" Type="Int32" />
-          <Property Name="Layer_LayerId" Type="Int32" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <Property Name="Process_ProcessId" Type="Int32" Nullable="false" />
           <Property Name="ProcessGroup_ProcessGroupId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Layer" Relationship="Self.fk_ProcessSequence_Layer1" FromRole="ProcessSequence" ToRole="Layer" />
           <NavigationProperty Name="ProcessGroup" Relationship="Self.fk_ProcessSequence_ProcessGroup1" FromRole="ProcessSequence" ToRole="ProcessGroup" />
-        </EntityType>
-        <EntityType Name="ProductFamily">
-          <Key>
-            <PropertyRef Name="ProductFamilyId" />
-          </Key>
-          <Property Name="ProductFamilyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Acronym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Wafers" Relationship="Self.fk_Wafer_ProductFamily1" FromRole="ProductFamily" ToRole="Wafer" />
-        </EntityType>
-        <EntityType Name="ProductName">
-          <Key>
-            <PropertyRef Name="ProductNameId" />
-          </Key>
-          <Property Name="ProductNameId" Type="Int32" Nullable="false" />
-          <Property Name="ProductNameLong" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ProductNameShort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ProductNameCustomer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ProductNameAcronym" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ProcessGroups" Relationship="Self.fk_ProcessGroup_ProductName1" FromRole="ProductName" ToRole="ProcessGroup" />
-          <NavigationProperty Name="Wafers" Relationship="Self.fk_Wafer_ProductName1" FromRole="ProductName" ToRole="Wafer" />
+          <NavigationProperty Name="Process" Relationship="WTDB2_0Model.fk_ProcessSequence_Process1" FromRole="ProcessSequence" ToRole="Process" />
         </EntityType>
         <EntityType Name="SPCAcquisition">
           <Key>
@@ -795,10 +771,10 @@
             <PropertyRef Name="TechnicianId" />
           </Key>
           <Property Name="TechnicianId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="FNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ShortCut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShortCutName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="WaferHistories" Relationship="Self.fk_WaferHistory_Technician1" FromRole="Technician" ToRole="WaferHistory" />
         </EntityType>
         <EntityType Name="Wafer">
@@ -817,8 +793,8 @@
           <Property Name="WaferType_WaferTypeId" Type="Int32" Nullable="false" />
           <Property Name="WaferSize_WaferSizeId" Type="Int32" Nullable="false" />
           <Property Name="Mask_MaskId" Type="Int32" />
-          <Property Name="ProductName_ProductNameId" Type="Int32" />
-          <Property Name="ProductFamily_ProductFamilyId" Type="Int32" />
+          <Property Name="Product_ProductId" Type="Int32" />
+          <Property Name="ProductGroup_ProductGroupId" Type="Int32" />
           <Property Name="WaferState_WaferStateId" Type="Int32" />
           <Property Name="Lot_LotId" Type="Int32" />
           <Property Name="EpiType_EpiTypeId" Type="Int32" Nullable="false" />
@@ -826,14 +802,14 @@
           <NavigationProperty Name="EpiType" Relationship="Self.fk_Wafer_EpiType1" FromRole="Wafer" ToRole="EpiType" />
           <NavigationProperty Name="Lot" Relationship="Self.fk_Wafer_Lot1" FromRole="Wafer" ToRole="Lot" />
           <NavigationProperty Name="Mask" Relationship="Self.fk_Wafer_Mask1" FromRole="Wafer" ToRole="Mask" />
-          <NavigationProperty Name="ProductFamily" Relationship="Self.fk_Wafer_ProductFamily1" FromRole="Wafer" ToRole="ProductFamily" />
-          <NavigationProperty Name="ProductName" Relationship="Self.fk_Wafer_ProductName1" FromRole="Wafer" ToRole="ProductName" />
           <NavigationProperty Name="SPCAcquisitions" Relationship="Self.fk_SPCAcquisition_Wafer1" FromRole="Wafer" ToRole="SPCAcquisition" />
           <NavigationProperty Name="WaferSize" Relationship="Self.fk_Wafer_WaferSize1" FromRole="Wafer" ToRole="WaferSize" />
           <NavigationProperty Name="WaferState" Relationship="Self.fk_Wafer_WaferState1" FromRole="Wafer" ToRole="WaferState" />
           <NavigationProperty Name="WaferSupplier" Relationship="Self.fk_Wafer_WaferSupplier1" FromRole="Wafer" ToRole="WaferSupplier" />
           <NavigationProperty Name="WaferType" Relationship="Self.fk_Wafer_WaferType1" FromRole="Wafer" ToRole="WaferType" />
           <NavigationProperty Name="WaferHistories" Relationship="Self.fk_WaferHistory_Wafer1" FromRole="Wafer" ToRole="WaferHistory" />
+          <NavigationProperty Name="Product" Relationship="WTDB2_0Model.fk_Wafer_Product1" FromRole="Wafer" ToRole="Product" />
+          <NavigationProperty Name="ProductGroup" Relationship="WTDB2_0Model.fk_Wafer_ProductGroup1" FromRole="Wafer" ToRole="ProductGroup" />
         </EntityType>
         <EntityType Name="WaferHistory">
           <Key>
@@ -842,17 +818,15 @@
           <Property Name="WaferHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StartDate" Type="DateTime" />
           <Property Name="StopDate" Type="DateTime" />
-          <Property Name="LayerId" Type="Int32" />
-          <Property Name="Number" Type="Int32" />
-          <Property Name="TechnicianId" Type="Int32" />
-          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Technician_TechnicianId" Type="Int32" Nullable="false" />
           <Property Name="WaferLocation_WaferLocationId" Type="Int32" Nullable="false" />
           <Property Name="Wafer_WaferID" Type="Int32" Nullable="false" />
+          <Property Name="Process_ProcessId" Type="Int32" />
           <NavigationProperty Name="Technician" Relationship="Self.fk_WaferHistory_Technician1" FromRole="WaferHistory" ToRole="Technician" />
           <NavigationProperty Name="Wafer" Relationship="Self.fk_WaferHistory_Wafer1" FromRole="WaferHistory" ToRole="Wafer" />
           <NavigationProperty Name="WaferLocation" Relationship="Self.fk_WaferHistory_WaferLocation1" FromRole="WaferHistory" ToRole="WaferLocation" />
+          <NavigationProperty Name="Process" Relationship="WTDB2_0Model.fk_WaferHistory_Process1" FromRole="WaferHistory" ToRole="Process" />
         </EntityType>
         <EntityType Name="WaferLocation">
           <Key>
@@ -937,18 +911,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_ProcessSequence_Layer1">
-          <End Role="Layer" Type="Self.Layer" Multiplicity="0..1" />
-          <End Role="ProcessSequence" Type="Self.ProcessSequence" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Layer">
-              <PropertyRef Name="LayerId" />
-            </Principal>
-            <Dependent Role="ProcessSequence">
-              <PropertyRef Name="Layer_LayerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_SPCAcquisition_Line1">
           <End Role="Line" Type="Self.Line" Multiplicity="1" />
           <End Role="SPCAcquisition" Type="Self.SPCAcquisition" Multiplicity="*" />
@@ -985,18 +947,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_ProcessGroup_ProductName1">
-          <End Role="ProductName" Type="Self.ProductName" Multiplicity="1" />
-          <End Role="ProcessGroup" Type="Self.ProcessGroup" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductName">
-              <PropertyRef Name="ProductNameId" />
-            </Principal>
-            <Dependent Role="ProcessGroup">
-              <PropertyRef Name="ProductName_ProductNameId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_ProcessSequence_ProcessGroup1">
           <End Role="ProcessGroup" Type="Self.ProcessGroup" Multiplicity="1" />
           <End Role="ProcessSequence" Type="Self.ProcessSequence" Multiplicity="*" />
@@ -1006,30 +956,6 @@
             </Principal>
             <Dependent Role="ProcessSequence">
               <PropertyRef Name="ProcessGroup_ProcessGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Wafer_ProductFamily1">
-          <End Role="ProductFamily" Type="Self.ProductFamily" Multiplicity="0..1" />
-          <End Role="Wafer" Type="Self.Wafer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductFamily">
-              <PropertyRef Name="ProductFamilyId" />
-            </Principal>
-            <Dependent Role="Wafer">
-              <PropertyRef Name="ProductFamily_ProductFamilyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Wafer_ProductName1">
-          <End Role="ProductName" Type="Self.ProductName" Multiplicity="0..1" />
-          <End Role="Wafer" Type="Self.Wafer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductName">
-              <PropertyRef Name="ProductNameId" />
-            </Principal>
-            <Dependent Role="Wafer">
-              <PropertyRef Name="ProductName_ProductNameId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1169,14 +1095,11 @@
           <EntitySet Name="EpiSuppliers" EntityType="Self.EpiSupplier" />
           <EntitySet Name="EpiTypes" EntityType="Self.EpiType" />
           <EntitySet Name="FailureCategories" EntityType="Self.FailureCategory" />
-          <EntitySet Name="Layers" EntityType="Self.Layer" />
           <EntitySet Name="Lines" EntityType="Self.Line" />
           <EntitySet Name="Lots" EntityType="Self.Lot" />
           <EntitySet Name="Masks" EntityType="Self.Mask" />
           <EntitySet Name="ProcessGroups" EntityType="Self.ProcessGroup" />
           <EntitySet Name="ProcessSequences" EntityType="Self.ProcessSequence" />
-          <EntitySet Name="ProductFamilies" EntityType="Self.ProductFamily" />
-          <EntitySet Name="ProductNames" EntityType="Self.ProductName" />
           <EntitySet Name="SPCAcquisitions" EntityType="Self.SPCAcquisition" />
           <EntitySet Name="SPCDatas" EntityType="Self.SPCData" />
           <EntitySet Name="SPCDataTypes" EntityType="Self.SPCDataType" />
@@ -1201,10 +1124,6 @@
             <End Role="FailureCategory" EntitySet="FailureCategories" />
             <End Role="WaferState" EntitySet="WaferStates" />
           </AssociationSet>
-          <AssociationSet Name="fk_ProcessSequence_Layer1" Association="Self.fk_ProcessSequence_Layer1">
-            <End Role="Layer" EntitySet="Layers" />
-            <End Role="ProcessSequence" EntitySet="ProcessSequences" />
-          </AssociationSet>
           <AssociationSet Name="fk_SPCAcquisition_Line1" Association="Self.fk_SPCAcquisition_Line1">
             <End Role="Line" EntitySet="Lines" />
             <End Role="SPCAcquisition" EntitySet="SPCAcquisitions" />
@@ -1217,21 +1136,9 @@
             <End Role="Mask" EntitySet="Masks" />
             <End Role="Wafer" EntitySet="Wafers" />
           </AssociationSet>
-          <AssociationSet Name="fk_ProcessGroup_ProductName1" Association="Self.fk_ProcessGroup_ProductName1">
-            <End Role="ProductName" EntitySet="ProductNames" />
-            <End Role="ProcessGroup" EntitySet="ProcessGroups" />
-          </AssociationSet>
           <AssociationSet Name="fk_ProcessSequence_ProcessGroup1" Association="Self.fk_ProcessSequence_ProcessGroup1">
             <End Role="ProcessGroup" EntitySet="ProcessGroups" />
             <End Role="ProcessSequence" EntitySet="ProcessSequences" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Wafer_ProductFamily1" Association="Self.fk_Wafer_ProductFamily1">
-            <End Role="ProductFamily" EntitySet="ProductFamilies" />
-            <End Role="Wafer" EntitySet="Wafers" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Wafer_ProductName1" Association="Self.fk_Wafer_ProductName1">
-            <End Role="ProductName" EntitySet="ProductNames" />
-            <End Role="Wafer" EntitySet="Wafers" />
           </AssociationSet>
           <AssociationSet Name="fk_SPC_Data_SPC_Acquisition1" Association="Self.fk_SPC_Data_SPC_Acquisition1">
             <End Role="SPCAcquisition" EntitySet="SPCAcquisitions" />
@@ -1277,7 +1184,125 @@
             <End Role="WaferLocation" EntitySet="WaferLocations" />
             <End Role="WaferHistory" EntitySet="WaferHistories" />
           </AssociationSet>
+          <EntitySet Name="Processes" EntityType="WTDB2_0Model.Process" />
+          <EntitySet Name="Products" EntityType="WTDB2_0Model.Product" />
+          <EntitySet Name="ProductGroups" EntityType="WTDB2_0Model.ProductGroup" />
+          <AssociationSet Name="fk_ProcessSequence_Process1" Association="WTDB2_0Model.fk_ProcessSequence_Process1">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="ProcessSequence" EntitySet="ProcessSequences" />
+          </AssociationSet>
+          <AssociationSet Name="fk_WaferHistory_Process1" Association="WTDB2_0Model.fk_WaferHistory_Process1">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="WaferHistory" EntitySet="WaferHistories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProcessGroup_Product1" Association="WTDB2_0Model.fk_ProcessGroup_Product1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProcessGroup" EntitySet="ProcessGroups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Wafer_Product1" Association="WTDB2_0Model.fk_Wafer_Product1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Wafer" EntitySet="Wafers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Wafer_ProductGroup1" Association="WTDB2_0Model.fk_Wafer_ProductGroup1">
+            <End Role="ProductGroup" EntitySet="ProductGroups" />
+            <End Role="Wafer" EntitySet="Wafers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Acronym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProcessSequences" Relationship="WTDB2_0Model.fk_ProcessSequence_Process1" FromRole="Process" ToRole="ProcessSequence" />
+          <NavigationProperty Name="WaferHistories" Relationship="WTDB2_0Model.fk_WaferHistory_Process1" FromRole="Process" ToRole="WaferHistory" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Acronym" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProcessGroups" Relationship="WTDB2_0Model.fk_ProcessGroup_Product1" FromRole="Product" ToRole="ProcessGroup" />
+          <NavigationProperty Name="Wafers" Relationship="WTDB2_0Model.fk_Wafer_Product1" FromRole="Product" ToRole="Wafer" />
+        </EntityType>
+        <EntityType Name="ProductGroup">
+          <Key>
+            <PropertyRef Name="ProductGroupId" />
+          </Key>
+          <Property Name="ProductGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Acronym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Wafers" Relationship="WTDB2_0Model.fk_Wafer_ProductGroup1" FromRole="ProductGroup" ToRole="Wafer" />
+        </EntityType>
+        <Association Name="fk_ProcessSequence_Process1">
+          <End Type="WTDB2_0Model.Process" Role="Process" Multiplicity="1" />
+          <End Type="WTDB2_0Model.ProcessSequence" Role="ProcessSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessId" />
+            </Principal>
+            <Dependent Role="ProcessSequence">
+              <PropertyRef Name="Process_ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_WaferHistory_Process1">
+          <End Type="WTDB2_0Model.Process" Role="Process" Multiplicity="0..1" />
+          <End Type="WTDB2_0Model.WaferHistory" Role="WaferHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="ProcessId" />
+            </Principal>
+            <Dependent Role="WaferHistory">
+              <PropertyRef Name="Process_ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProcessGroup_Product1">
+          <End Type="WTDB2_0Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="WTDB2_0Model.ProcessGroup" Role="ProcessGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProcessGroup">
+              <PropertyRef Name="Product_ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Wafer_Product1">
+          <End Type="WTDB2_0Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="WTDB2_0Model.Wafer" Role="Wafer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Wafer">
+              <PropertyRef Name="Product_ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Wafer_ProductGroup1">
+          <End Type="WTDB2_0Model.ProductGroup" Role="ProductGroup" Multiplicity="0..1" />
+          <End Type="WTDB2_0Model.Wafer" Role="Wafer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductGroup">
+              <PropertyRef Name="ProductGroupId" />
+            </Principal>
+            <Dependent Role="Wafer">
+              <PropertyRef Name="ProductGroup_ProductGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1311,17 +1336,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Layers">
-            <EntityTypeMapping TypeName="WTDB2_0Model.Layer">
-              <MappingFragment StoreEntitySet="Layer">
-                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Acronym" ColumnName="Acronym" />
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Lines">
             <EntityTypeMapping TypeName="WTDB2_0Model.Line">
               <MappingFragment StoreEntitySet="Line">
@@ -1344,9 +1358,9 @@
             <EntityTypeMapping TypeName="WTDB2_0Model.Mask">
               <MappingFragment StoreEntitySet="Mask">
                 <ScalarProperty Name="MaskId" ColumnName="MaskId" />
-                <ScalarProperty Name="MaskNameShortcut" ColumnName="MaskNameShortcut" />
-                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
                 <ScalarProperty Name="MaskName" ColumnName="MaskName" />
+                <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
+                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
                 <ScalarProperty Name="Flat" ColumnName="Flat" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
@@ -1360,7 +1374,7 @@
                 <ScalarProperty Name="Options" ColumnName="Options" />
                 <ScalarProperty Name="BaseMaterial" ColumnName="BaseMaterial" />
                 <ScalarProperty Name="TargetDuration" ColumnName="TargetDuration" />
-                <ScalarProperty Name="ProductName_ProductNameId" ColumnName="ProductName_ProductNameId" />
+                <ScalarProperty Name="Product_ProductId" ColumnName="Product_ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1368,32 +1382,9 @@
             <EntityTypeMapping TypeName="WTDB2_0Model.ProcessSequence">
               <MappingFragment StoreEntitySet="ProcessSequence">
                 <ScalarProperty Name="ProcessSequenceId" ColumnName="ProcessSequenceId" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="Index" ColumnName="Index" />
-                <ScalarProperty Name="Layer_LayerId" ColumnName="Layer_LayerId" />
+                <ScalarProperty Name="Process_ProcessId" ColumnName="Process_ProcessId" />
                 <ScalarProperty Name="ProcessGroup_ProcessGroupId" ColumnName="ProcessGroup_ProcessGroupId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductFamilies">
-            <EntityTypeMapping TypeName="WTDB2_0Model.ProductFamily">
-              <MappingFragment StoreEntitySet="ProductFamily">
-                <ScalarProperty Name="ProductFamilyId" ColumnName="ProductFamilyId" />
-                <ScalarProperty Name="Acronym" ColumnName="Acronym" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductNames">
-            <EntityTypeMapping TypeName="WTDB2_0Model.ProductName">
-              <MappingFragment StoreEntitySet="ProductName">
-                <ScalarProperty Name="ProductNameId" ColumnName="ProductNameId" />
-                <ScalarProperty Name="ProductNameLong" ColumnName="ProductNameLong" />
-                <ScalarProperty Name="ProductNameShort" ColumnName="ProductNameShort" />
-                <ScalarProperty Name="ProductNameCustomer" ColumnName="ProductNameCustomer" />
-                <ScalarProperty Name="ProductNameAcronym" ColumnName="ProductNameAcronym" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1449,10 +1440,10 @@
             <EntityTypeMapping TypeName="WTDB2_0Model.Technician">
               <MappingFragment StoreEntitySet="Technician">
                 <ScalarProperty Name="TechnicianId" ColumnName="TechnicianId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="FNAME" ColumnName="FNAME" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ShortCut" ColumnName="ShortCut" />
                 <ScalarProperty Name="Site" ColumnName="Site" />
-                <ScalarProperty Name="ShortCutName" ColumnName="ShortCutName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1471,8 +1462,8 @@
                 <ScalarProperty Name="WaferType_WaferTypeId" ColumnName="WaferType_WaferTypeId" />
                 <ScalarProperty Name="WaferSize_WaferSizeId" ColumnName="WaferSize_WaferSizeId" />
                 <ScalarProperty Name="Mask_MaskId" ColumnName="Mask_MaskId" />
-                <ScalarProperty Name="ProductName_ProductNameId" ColumnName="ProductName_ProductNameId" />
-                <ScalarProperty Name="ProductFamily_ProductFamilyId" ColumnName="ProductFamily_ProductFamilyId" />
+                <ScalarProperty Name="Product_ProductId" ColumnName="Product_ProductId" />
+                <ScalarProperty Name="ProductGroup_ProductGroupId" ColumnName="ProductGroup_ProductGroupId" />
                 <ScalarProperty Name="WaferState_WaferStateId" ColumnName="WaferState_WaferStateId" />
                 <ScalarProperty Name="Lot_LotId" ColumnName="Lot_LotId" />
                 <ScalarProperty Name="EpiType_EpiTypeId" ColumnName="EpiType_EpiTypeId" />
@@ -1485,14 +1476,11 @@
                 <ScalarProperty Name="WaferHistoryId" ColumnName="WaferHistoryId" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="StopDate" ColumnName="StopDate" />
-                <ScalarProperty Name="LayerId" ColumnName="LayerId" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="TechnicianId" ColumnName="TechnicianId" />
-                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Technician_TechnicianId" ColumnName="Technician_TechnicianId" />
                 <ScalarProperty Name="WaferLocation_WaferLocationId" ColumnName="WaferLocation_WaferLocationId" />
                 <ScalarProperty Name="Wafer_WaferID" ColumnName="Wafer_WaferID" />
+                <ScalarProperty Name="Process_ProcessId" ColumnName="Process_ProcessId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1539,6 +1527,39 @@
                 <ScalarProperty Name="WaferTypeId" ColumnName="WaferTypeId" />
                 <ScalarProperty Name="WaferTypeShortcut" ColumnName="WaferTypeShortcut" />
                 <ScalarProperty Name="WaferTypeName" ColumnName="WaferTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processes">
+            <EntityTypeMapping TypeName="WTDB2_0Model.Process">
+              <MappingFragment StoreEntitySet="Process">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Acronym" ColumnName="Acronym" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="WTDB2_0Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Acronym" ColumnName="Acronym" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductGroups">
+            <EntityTypeMapping TypeName="WTDB2_0Model.ProductGroup">
+              <MappingFragment StoreEntitySet="ProductGroup">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Acronym" ColumnName="Acronym" />
+                <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

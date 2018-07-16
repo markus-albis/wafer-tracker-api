@@ -10,9 +10,12 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class ProductFamily
-    Public Property ProductFamilyId As Integer
-    Public Property Acronym As String
+Partial Public Class Mask
+    Public Property MaskId As Integer
+    Public Property MaskName As String
+    Public Property Shortcut As String
+    Public Property DeviceName As String
+    Public Property Flat As String
     Public Property Description As String
 
     Public Overridable Property Wafers As ICollection(Of Wafer) = New HashSet(Of Wafer)

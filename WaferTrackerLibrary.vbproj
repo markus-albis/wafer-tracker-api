@@ -245,6 +245,111 @@
     <Compile Include="Services\IFileSystemService.vb" />
     <Compile Include="Services\WaferTrackerDataService.vb" />
     <Compile Include="Services\WaferDataService50.vb" />
+    <Compile Include="WaferTrackerEntities\EpiSupplier.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\EpiType.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\FailureCategory.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\Line.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\Lot.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\Mask.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\Process.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\ProcessGroup.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\ProcessSequence.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\Product.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\ProductGroup.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\SPCAcquisition.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\SPCData.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\SPCDataType.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\SPCParameter.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\Technician.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\Wafer.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferHistory.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferLocation.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferSize.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferState.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferSupplier.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferTrackerEntities.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WaferTrackerEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferTrackerEntities.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WaferTrackerEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferTrackerEntities.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerEntities\WaferType.vb">
+      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaferTrackerModel10\WaferQuality.vb" />
+    <Compile Include="WaferTrackerModel10\WaferLocation.vb" />
+    <Compile Include="WaferTrackerModel10\WaferStatus.vb" />
+    <Compile Include="WaferTrackerModel10\WaferType.vb" />
+    <Compile Include="WaferTrackerModel10\WaferSupplier.vb" />
+    <Compile Include="WaferTrackerModel10\WaferSize.vb" />
+    <Compile Include="WaferTrackerModel10\Wafer.vb" />
+    <Compile Include="WaferTrackerModel10\Technician.vb" />
+    <Compile Include="WaferTrackerModel10\SPC_Parameter.vb" />
+    <Compile Include="WaferTrackerModel10\SPC_Data_Type.vb" />
+    <Compile Include="WaferTrackerModel10\SPC_Data.vb" />
+    <Compile Include="WaferTrackerModel10\SPC_Acquisition.vb" />
+    <Compile Include="WaferTrackerModel10\ProcessSequence.vb" />
+    <Compile Include="WaferTrackerModel10\ProcessGroup.vb" />
+    <Compile Include="WaferTrackerModel10\ProductName.vb" />
+    <Compile Include="WaferTrackerModel10\ProductFamily.vb" />
+    <Compile Include="WaferTrackerModel10\Mask.vb" />
+    <Compile Include="WaferTrackerModel10\LotNumber.vb" />
+    <Compile Include="WaferTrackerModel10\Line.vb" />
+    <Compile Include="WaferTrackerModel10\Layer.vb" />
+    <Compile Include="WaferTrackerModel10\EpiSupplier.vb" />
     <Compile Include="WaferTrackerModel10\EpiType.vb" />
     <Compile Include="WaferTrackerModel10\WaferDataContext.vb" />
     <Compile Include="WaferDataModel50\Chip.vb" />
@@ -290,90 +395,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Services\FileSystemService.vb" />
-    <Compile Include="WaferTrackingEntities\EpiSupplier.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\EpiType.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\FailureCategory.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\Layer.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\Line.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\Lot.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\Mask.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\ProcessGroup.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\ProcessSequence.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\ProductFamily.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\ProductName.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\SPCAcquisition.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\SPCData.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\SPCDataType.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\SPCParameter.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\Technician.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\Wafer.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferHistory.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferLocation.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferSize.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferState.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferSupplier.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferTrackerEntities.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WaferTrackerEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferTrackerEntities.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WaferTrackerEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferTrackerEntities.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WaferTrackingEntities\WaferType.vb">
-      <DependentUpon>WaferTrackerEntities.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -399,22 +420,22 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="WaferTrackingEntities\WaferTrackerEntities.edmx">
+    <EntityDeploy Include="WaferTrackerEntities\WaferTrackerEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WaferTrackerEntities.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <None Include="WaferTrackingEntities\WaferTrackerEntities.edmx.diagram">
+    <None Include="WaferTrackerEntities\WaferTrackerEntities.edmx.diagram">
       <DependentUpon>WaferTrackerEntities.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Start\BreezeWebApiConfig.cs" />
-    <Content Include="WaferTrackingEntities\WaferTrackerEntities.Context.tt">
+    <Content Include="WaferTrackerEntities\WaferTrackerEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WaferTrackerEntities.edmx</DependentUpon>
       <LastGenOutput>WaferTrackerEntities.Context.vb</LastGenOutput>
     </Content>
-    <Content Include="WaferTrackingEntities\WaferTrackerEntities.tt">
+    <Content Include="WaferTrackerEntities\WaferTrackerEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WaferTrackerEntities.edmx</DependentUpon>
       <LastGenOutput>WaferTrackerEntities.vb</LastGenOutput>

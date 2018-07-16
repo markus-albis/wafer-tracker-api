@@ -16,9 +16,9 @@ Partial Public Class ProcessGroup
     Public Property Options As String
     Public Property BaseMaterial As String
     Public Property TargetDuration As Nullable(Of Integer)
-    Public Property ProductName_ProductNameId As Integer
+    Public Property Product_ProductId As Integer
 
-    Public Overridable Property ProductName As ProductName
     Public Overridable Property ProcessSequences As ICollection(Of ProcessSequence) = New HashSet(Of ProcessSequence)
+    Public Overridable Property Product As Product
 
 End Class

@@ -25,14 +25,11 @@ Partial Public Class WaferTrackerEntities
     Public Overridable Property EpiSuppliers() As DbSet(Of EpiSupplier)
     Public Overridable Property EpiTypes() As DbSet(Of EpiType)
     Public Overridable Property FailureCategories() As DbSet(Of FailureCategory)
-    Public Overridable Property Layers() As DbSet(Of Layer)
     Public Overridable Property Lines() As DbSet(Of Line)
     Public Overridable Property Lots() As DbSet(Of Lot)
     Public Overridable Property Masks() As DbSet(Of Mask)
     Public Overridable Property ProcessGroups() As DbSet(Of ProcessGroup)
     Public Overridable Property ProcessSequences() As DbSet(Of ProcessSequence)
-    Public Overridable Property ProductFamilies() As DbSet(Of ProductFamily)
-    Public Overridable Property ProductNames() As DbSet(Of ProductName)
     Public Overridable Property SPCAcquisitions() As DbSet(Of SPCAcquisition)
     Public Overridable Property SPCDatas() As DbSet(Of SPCData)
     Public Overridable Property SPCDataTypes() As DbSet(Of SPCDataType)
@@ -45,5 +42,8 @@ Partial Public Class WaferTrackerEntities
     Public Overridable Property WaferStates() As DbSet(Of WaferState)
     Public Overridable Property WaferSuppliers() As DbSet(Of WaferSupplier)
     Public Overridable Property WaferTypes() As DbSet(Of WaferType)
+    Public Overridable Property Processes() As DbSet(Of Process)
+    Public Overridable Property Products() As DbSet(Of Product)
+    Public Overridable Property ProductGroups() As DbSet(Of ProductGroup)
 
 End Class

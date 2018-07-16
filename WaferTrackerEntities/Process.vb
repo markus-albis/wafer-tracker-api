@@ -10,14 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Mask
-    Public Property MaskId As Integer
-    Public Property MaskNameShortcut As String
-    Public Property DeviceName As String
-    Public Property MaskName As String
-    Public Property Flat As String
+Partial Public Class Process
+    Public Property ProcessId As Integer
     Public Property Description As String
+    Public Property Acronym As String
+    Public Property Duration As Nullable(Of Integer)
+    Public Property Remark As String
 
-    Public Overridable Property Wafers As ICollection(Of Wafer) = New HashSet(Of Wafer)
+    Public Overridable Property ProcessSequences As ICollection(Of ProcessSequence) = New HashSet(Of ProcessSequence)
+    Public Overridable Property WaferHistories As ICollection(Of WaferHistory) = New HashSet(Of WaferHistory)
 
 End Class

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="11fefd56da494b16a868191058a68c66" Name="Diagram1">
+        <EntityTypeShape EntityType="WTDB2_0Model.EpiSupplier" Width="1.5" PointX="1.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.EpiType" Width="1.5" PointX="1.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.FailureCategory" Width="1.5" PointX="9.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.Line" Width="1.5" PointX="12.625" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.Lot" Width="1.5" PointX="3.875" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.Mask" Width="1.5" PointX="5.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.ProcessGroup" Width="1.5" PointX="10.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.ProcessSequence" Width="1.5" PointX="13.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.SPCAcquisition" Width="1.5" PointX="7.875" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.SPCData" Width="1.5" PointX="10.375" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.SPCDataType" Width="1.5" PointX="12.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.SPCParameter" Width="1.5" PointX="7.875" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.Technician" Width="1.5" PointX="18.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.Wafer" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.WaferHistory" Width="1.5" PointX="15.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.WaferLocation" Width="1.5" PointX="18.125" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.WaferSize" Width="1.5" PointX="1.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.WaferState" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.WaferSupplier" Width="1.5" PointX="1.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WTDB2_0Model.WaferType" Width="1.5" PointX="1.75" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_EpiSupplier1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_EpiType1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_WaferState_FailureCategory1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_SPCAcquisition_Line1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_Lot1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_Mask1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_ProcessSequence_ProcessGroup1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_SPC_Data_SPC_Acquisition1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_SPCAcquisition_SPCParameter1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_SPCAcquisition_Wafer1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_SPCData_SPCDataType1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_WaferHistory_Technician1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_WaferSize1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_WaferState1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_WaferSupplier1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_WaferType1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_WaferHistory_Wafer1" ManuallyRouted="false" />
+        <AssociationConnector Association="WTDB2_0Model.fk_WaferHistory_WaferLocation1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WTDB2_0Model.Process" Width="1.5" PointX="15.75" PointY="9.125" />
+        <EntityTypeShape EntityType="WTDB2_0Model.Product" Width="1.5" PointX="10.875" PointY="12.5" />
+        <EntityTypeShape EntityType="WTDB2_0Model.ProductGroup" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="WTDB2_0Model.fk_ProcessSequence_Process1" />
+        <AssociationConnector Association="WTDB2_0Model.fk_WaferHistory_Process1" />
+        <AssociationConnector Association="WTDB2_0Model.fk_ProcessGroup_Product1" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_Product1" />
+        <AssociationConnector Association="WTDB2_0Model.fk_Wafer_ProductGroup1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

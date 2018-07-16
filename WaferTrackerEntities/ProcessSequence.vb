@@ -12,12 +12,11 @@ Imports System.Collections.Generic
 
 Partial Public Class ProcessSequence
     Public Property ProcessSequenceId As Integer
-    Public Property GroupId As Nullable(Of Integer)
-    Public Property Index As Nullable(Of Integer)
-    Public Property Layer_LayerId As Nullable(Of Integer)
+    Public Property Index As Integer
+    Public Property Process_ProcessId As Integer
     Public Property ProcessGroup_ProcessGroupId As Integer
 
-    Public Overridable Property Layer As Layer
     Public Overridable Property ProcessGroup As ProcessGroup
+    Public Overridable Property Process As Process
 
 End Class

@@ -10,13 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class ProductName
-    Public Property ProductNameId As Integer
-    Public Property ProductNameLong As String
-    Public Property ProductNameShort As String
-    Public Property ProductNameCustomer As String
-    Public Property ProductNameAcronym As String
+Partial Public Class Product
+    Public Property ProductId As Integer
+    Public Property ProductName As String
     Public Property ProductCode As String
+    Public Property ShortName As String
+    Public Property CustomerName As String
+    Public Property Acronym As String
     Public Property Description As String
 
     Public Overridable Property ProcessGroups As ICollection(Of ProcessGroup) = New HashSet(Of ProcessGroup)

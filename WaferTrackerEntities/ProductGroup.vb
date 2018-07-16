@@ -10,13 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Technician
-    Public Property TechnicianId As Integer
-    Public Property Name As String
-    Public Property FNAME As String
-    Public Property Site As String
-    Public Property ShortCutName As String
+Partial Public Class ProductGroup
+    Public Property ProductGroupId As Integer
+    Public Property Acronym As String
+    Public Property Description As String
 
-    Public Overridable Property WaferHistories As ICollection(Of WaferHistory) = New HashSet(Of WaferHistory)
+    Public Overridable Property Wafers As ICollection(Of Wafer) = New HashSet(Of Wafer)
 
 End Class

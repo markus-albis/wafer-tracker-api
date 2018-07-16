@@ -23,8 +23,8 @@ Partial Public Class Wafer
     Public Property WaferType_WaferTypeId As Integer
     Public Property WaferSize_WaferSizeId As Integer
     Public Property Mask_MaskId As Nullable(Of Integer)
-    Public Property ProductName_ProductNameId As Nullable(Of Integer)
-    Public Property ProductFamily_ProductFamilyId As Nullable(Of Integer)
+    Public Property Product_ProductId As Nullable(Of Integer)
+    Public Property ProductGroup_ProductGroupId As Nullable(Of Integer)
     Public Property WaferState_WaferStateId As Nullable(Of Integer)
     Public Property Lot_LotId As Nullable(Of Integer)
     Public Property EpiType_EpiTypeId As Integer
@@ -33,13 +33,13 @@ Partial Public Class Wafer
     Public Overridable Property EpiType As EpiType
     Public Overridable Property Lot As Lot
     Public Overridable Property Mask As Mask
-    Public Overridable Property ProductFamily As ProductFamily
-    Public Overridable Property ProductName As ProductName
     Public Overridable Property SPCAcquisitions As ICollection(Of SPCAcquisition) = New HashSet(Of SPCAcquisition)
     Public Overridable Property WaferSize As WaferSize
     Public Overridable Property WaferState As WaferState
     Public Overridable Property WaferSupplier As WaferSupplier
     Public Overridable Property WaferType As WaferType
     Public Overridable Property WaferHistories As ICollection(Of WaferHistory) = New HashSet(Of WaferHistory)
+    Public Overridable Property Product As Product
+    Public Overridable Property ProductGroup As ProductGroup
 
 End Class
