@@ -14,12 +14,12 @@ Namespace WaferTrackerModel
         Public Property MaskIdRef As Integer
         Public Property WaferSupplierIdRef As Integer
         Public Property WaferTypeIdRef As Integer
-        Public Property WaferSizeIdRef As Integer
+        Public Property WaferSizeId As Integer
         Public Property EpiSupplierIdRef As Integer
         Public Property EpiTypeIdRef As Integer
         Public Property EpiDeliveryDate As DateTime
-        Public Property ProductNameId As Integer
-        Public Property ProductFamiliyId As Integer
+        Public Property ProductNameIdRef As Integer
+        Public Property ProductFamilyIdRef As Integer
         Public Property QualityIdRef As Integer
         Public Property Remark As String
 

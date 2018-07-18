@@ -18,7 +18,7 @@ Partial Public Class SPCAcquisition
     Public Property RemarkSPC As String
     Public Property NoteSPC As String
     Public Property SPCParameter_SPCParameterId As Integer
-    Public Property Wafer_WaferID As Integer
+    Public Property Wafer_WaferId As Integer
     Public Property Line_LineId As Integer
 
     Public Overridable Property Line As Line

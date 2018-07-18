@@ -53,7 +53,7 @@ Namespace Services
             Dim _queryResult As IEnumerable(Of Schema10.ProductFamily)
             conn = GetConnection(database)
             conn.Open()
-            _queryResult = conn.Query(Of Schema10.ProductFamily)("Select * FROM ProductFamiliy")
+            _queryResult = conn.Query(Of Schema10.ProductFamily)("Select * FROM ProductFamily")
             conn.Close()
             Return _queryResult
         End Function

@@ -11,7 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Wafer
-    Public Property WaferID As Integer
+    Public Property WaferId As Integer
     Public Property WaferIdentification As String
     Public Property WaferLotNo As String
     Public Property WaferNo As String
@@ -19,27 +19,29 @@ Partial Public Class Wafer
     Public Property EPIDeliveryDate As Nullable(Of Date)
     Public Property Remark As String
     Public Property WaferSupplier_WaferSupplierId As Nullable(Of Integer)
-    Public Property EpiSupplier_EPISupplierId As Integer
-    Public Property WaferType_WaferTypeId As Integer
-    Public Property WaferSize_WaferSizeId As Integer
+    Public Property EpiSupplier_EPISupplierId As Nullable(Of Integer)
+    Public Property WaferType_WaferTypeId As Nullable(Of Integer)
+    Public Property WaferSize_WaferSizeId As Nullable(Of Integer)
     Public Property Mask_MaskId As Nullable(Of Integer)
     Public Property Product_ProductId As Nullable(Of Integer)
     Public Property ProductGroup_ProductGroupId As Nullable(Of Integer)
     Public Property WaferState_WaferStateId As Nullable(Of Integer)
     Public Property Lot_LotId As Nullable(Of Integer)
-    Public Property EpiType_EpiTypeId As Integer
+    Public Property EpiType_EpiTypeId As Nullable(Of Integer)
+    Public Property FailureCategory_FailureCategoryId As Nullable(Of Integer)
 
-    Public Overridable Property EpiSupplier As EpiSupplier
-    Public Overridable Property EpiType As EpiType
     Public Overridable Property Lot As Lot
     Public Overridable Property Mask As Mask
-    Public Overridable Property SPCAcquisitions As ICollection(Of SPCAcquisition) = New HashSet(Of SPCAcquisition)
-    Public Overridable Property WaferSize As WaferSize
     Public Overridable Property WaferState As WaferState
     Public Overridable Property WaferSupplier As WaferSupplier
-    Public Overridable Property WaferType As WaferType
-    Public Overridable Property WaferHistories As ICollection(Of WaferHistory) = New HashSet(Of WaferHistory)
     Public Overridable Property Product As Product
     Public Overridable Property ProductGroup As ProductGroup
+    Public Overridable Property FailureCategory As FailureCategory
+    Public Overridable Property SPCAcquisitions As ICollection(Of SPCAcquisition) = New HashSet(Of SPCAcquisition)
+    Public Overridable Property EpiSupplier As EpiSupplier
+    Public Overridable Property EpiType As EpiType
+    Public Overridable Property WaferSize As WaferSize
+    Public Overridable Property WaferType As WaferType
+    Public Overridable Property WaferHistories As ICollection(Of WaferHistory) = New HashSet(Of WaferHistory)
 
 End Class

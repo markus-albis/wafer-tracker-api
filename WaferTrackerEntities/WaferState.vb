@@ -14,9 +14,7 @@ Partial Public Class WaferState
     Public Property WaferStateId As Integer
     Public Property Description As String
     Public Property SortOrder As Nullable(Of Short)
-    Public Property FailureCategory_FailureCategoryId As Integer
 
-    Public Overridable Property FailureCategory As FailureCategory
     Public Overridable Property Wafers As ICollection(Of Wafer) = New HashSet(Of Wafer)
 
 End Class

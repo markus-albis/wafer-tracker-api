@@ -12,7 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class WaferSize
     Public Property WaferSizeId As Integer
-    Public Property WaferSize1 As String
+    Public Property Description As String
 
     Public Overridable Property Wafers As ICollection(Of Wafer) = New HashSet(Of Wafer)
 

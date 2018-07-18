@@ -15,6 +15,6 @@ Partial Public Class FailureCategory
     Public Property Description As String
     Public Property Remark As String
 
-    Public Overridable Property WaferStates As ICollection(Of WaferState) = New HashSet(Of WaferState)
+    Public Overridable Property Wafers As ICollection(Of Wafer) = New HashSet(Of Wafer)
 
 End Class

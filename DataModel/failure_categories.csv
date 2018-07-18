@@ -1,0 +1,17 @@
+FailureCategoryId,Description,Remark
+1,"No Failure","Equivqalent to Passed"
+2,Equipment,NULL
+3,Operator,NULL
+4,"Early Fracture",NULL
+5,Fracture,NULL
+6,Passivation,NULL
+7,AR-Coating,NULL
+8,"Pad Adhesion",NULL
+9,Epitaxy,NULL
+10,Other,NULL
+11,Management,NULL
+12,"Lap Process",NULL
+13,"Wet Lens Process",NULL
+14,"Dry Lens Process",NULL
+15,"Wafer Bond/Debond",NULL
+16,Subcontractor,NULL
