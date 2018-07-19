@@ -31,13 +31,25 @@ Namespace Controllers
             Return _contextProvider.Context.EpiTypes
         End Function
 
+        ' ~/breeze/WaferTracker/FailureCategories
+        <HttpGet>
+        Public Function FailureCategories() As IQueryable
+            Return _contextProvider.Context.FailureCategories
+        End Function
+
+        ' ~/breeze/WaferTracker/Lots
+        <HttpGet>
+        Public Function Lots() As IQueryable
+            Return _contextProvider.Context.Lots
+        End Function
+
         ' ~/breeze/WaferTracker/Masks
         <HttpGet>
         Public Function Masks() As IQueryable
             Return _contextProvider.Context.Masks
         End Function
 
-        ' ~/breeze/WaferTracker/ProductNames
+        ' ~/breeze/WaferTracker/Products
         <HttpGet>
         Public Function Products() As IQueryable
             Return _contextProvider.Context.Products
@@ -49,10 +61,34 @@ Namespace Controllers
             Return _contextProvider.Context.Technicians
         End Function
 
+        ' ~/breeze/WaferTracker/Wafers
+        <HttpGet>
+        Public Function Wafers() As IQueryable
+            Return _contextProvider.Context.Wafers
+        End Function
+
+        ' ~/breeze/WaferTracker/WaferHistories
+        <HttpGet>
+        Public Function WaferHistories() As IQueryable
+            Return _contextProvider.Context.WaferHistories
+        End Function
+
+        ' ~/breeze/WaferTracker/WaferLocations
+        <HttpGet>
+        Public Function WaferLocations() As IQueryable
+            Return _contextProvider.Context.WaferLocations
+        End Function
+
         ' ~/breeze/WaferTracker/WaferSuppliers
         <HttpGet>
         Public Function WaferSuppliers() As IQueryable
             Return _contextProvider.Context.WaferSuppliers
+        End Function
+
+        ' ~/breeze/WaferTracker/WaferStates
+        <HttpGet>
+        Public Function WaferStates() As IQueryable
+            Return _contextProvider.Context.WaferStates
         End Function
 
         <HttpPost>
