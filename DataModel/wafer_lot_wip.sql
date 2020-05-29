@@ -1,0 +1,1 @@
+SELECT Wafer.EPIRunNumber, Lot.LotNumber, Product.ProductCode FROM Wafer Inner Join Lot On Lot_LotId = Lot.LotId Inner Join Product ON Product_ProductId = Product.ProductId Where Wafer.WaferState_WaferStateId = 2;

@@ -40,6 +40,7 @@ Namespace Controllers
         ' ~/breeze/WaferTracker/Lots
         <HttpGet>
         Public Function Lots() As IQueryable
+
             Return _contextProvider.Context.Lots
         End Function
 
